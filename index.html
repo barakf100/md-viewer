@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>MD Viewer</title>
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="brand">
+        <img src="/favicon.svg" alt="" width="22" height="22" />
+        <span class="filename" id="filename" title="Click to rename">untitled.md</span>
+      </div>
+      <div class="actions">
+        <button id="btn-new" title="New document (Ctrl+Alt+N)">New</button>
+        <button id="btn-open" title="Open file (Ctrl+O)">Open</button>
+        <button id="btn-save" title="Download .md (Ctrl+S)">Save</button>
+        <button id="btn-export" title="Export as standalone HTML">Export HTML</button>
+        <span class="sep"></span>
+        <div class="segmented" role="group" aria-label="View mode">
+          <button data-view="edit">Edit</button>
+          <button data-view="split">Split</button>
+          <button data-view="preview">Preview</button>
+        </div>
+        <button id="btn-toc" title="Toggle outline">Outline</button>
+        <button id="btn-theme" title="Toggle theme" aria-label="Toggle theme">◐</button>
+      </div>
+      <input type="file" id="file-input" accept=".md,.markdown,.mdown,.txt,text/markdown" hidden />
+    </header>
+
+    <main class="workspace" id="workspace">
+      <nav class="toc" id="toc" aria-label="Outline"></nav>
+      <section class="pane editor-pane">
+        <textarea id="editor" spellcheck="false" aria-label="Markdown source"></textarea>
+      </section>
+      <section class="pane preview-pane" id="preview-pane">
+        <article class="markdown-body" id="preview"></article>
+      </section>
+    </main>
+
+    <footer class="statusbar">
+      <span id="stats"></span>
+      <span id="status"></span>
+    </footer>
+
+    <div class="drop-overlay" id="drop-overlay">Drop a Markdown file to open it</div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
